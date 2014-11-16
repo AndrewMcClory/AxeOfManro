@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="cache-control" content="no-cache">
+
+<title>Sprite Editor</title>
+
+<script language="javascript" src="javascripts/game_constants.js?2013060131030" type="text/javascript"></script>
+<script language="javascript" src="javascripts/game_geometry.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/canvas_objects.js?201306080815" type="text/javascript"></script>
+<script language="javascript" src="javascripts/sprite_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/sprite_canvas.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/sprite_editor.js?201305091700" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table style='margin: 0px auto;'>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="SelectForm">
+<button type="button" onclick="spriteEditor.onPrev();">Prev</button>
+<button type="button" onclick="spriteEditor.onNext();">Next</button>
+<select name="Tool">
+<option value="AnchorPoint" selected>Anchor point</option>
+<option value="TopLeftBoundary">Top left boundary</option>
+<option value="BottomRightBoundary">Bottom right boundary</option>
+<option value="TopLeftAttack">Top left attack</option>
+<option value="BottomRightAttack">Bottom right attack</option>
+</select>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<canvas id="SpriteCanvas" onmousedown="spriteEditor.spriteMouseDown(event);" width="640" height="480" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="SrcForm">
+Width: <input type="number" name="SpriteWidth" defaultValue="32" min="1" max="640"/>
+Height: <input type="number" name="SpriteHeight" defaultValue="32" min="1" max="480"/>
+<br>
+Sprite Image: <input type="text" name="SpriteImage"/>
+<br>
+<button type="button" onclick="spriteEditor.onGenerate();">Generate</button>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="OpenForm">
+Sprite Set: <input type="number" name="SpriteSetNumber", min="0" max="20"/>
+<br>
+<button type="button" onclick="spriteEditor.onOpen();">Open</button>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<textarea id = "SpriteOutput" disabled=true rows="8" cols="65">Output</textarea>
+<br />
+<button type="button" onclick="spriteEditor.onRefresh();">Refresh</button>
+</td>
+</tr>
+
+</table>
+
+<script type="text/javascript">
+var spriteEditor = new SpriteEditor();
+</script>
+
+</body>

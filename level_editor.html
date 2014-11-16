@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="cache-control" content="no-cache">
+
+<title>Level Editor</title>
+
+<script language="javascript" src="javascripts/game_constants.js?201306200640" type="text/javascript"></script>
+<script language="javascript" src="javascripts/jquery.min.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/jquery.hotkeys.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/key_status.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/linked_list.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/canvas_objects.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/game_geometry.js?201305260932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_palette.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/sprite_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/level_canvas.js?201306080815" type="text/javascript"></script>
+<script language="javascript" src="javascripts/action_utils.js?201306161630" type="text/javascript"></script>
+<script language="javascript" src="javascripts/hero_actions.js?201306082330" type="text/javascript"></script>
+<script language="javascript" src="javascripts/item_actions.js?201306150636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/platform_actions.js?201305091700" type="text/javascript"></script>
+<script language="javascript" src="javascripts/enemy_actions.js?201306102134" type="text/javascript"></script>
+<script language="javascript" src="javascripts/decoration_actions.js?201306150636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/weapon_actions.js?201306162134" type="text/javascript"></script>
+<script language="javascript" src="javascripts/level_data.js?201306150636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/level_editor.js?201306161630" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table style='margin: 0px auto;'>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="SelectForm">
+Tool <select name="Tool">
+<option value="Tile" selected>Tile</option>
+<option value="Sprite">Sprite</option>
+<option value="Eraser">Eraser</option>
+</select>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<canvas id="LevelCanvas" onmousedown="levelEditor.levelMouseDown(event);" width="640" height="512" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<canvas id="TileCanvas" onmousedown="levelEditor.tileMouseDown(event);" width="640" height="96" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<canvas id="SpriteCanvas" onmousedown="levelEditor.spriteMouseDown(event);" width="640" height="64" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="LevelForm">
+Width: <input type="number" name="LevelWidth" defaultValue="5" min="20" max="200"/>
+Height: <input type="number" name="LevelHeight" defaultValue = "5" min="15" max="150"/>
+<br>
+Tile Set: <input type="text" name="LevelTileSet"/>
+Background Image: <input type="text" name="LevelBackground"/>
+<br>
+Intro: <input type="number" name="LevelIntro" defaultValue="0" min="0" max="20"/>
+<br>
+<button type="button" onclick="levelEditor.onGenerate();">Generate</button>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="OpenForm">
+Level: <input type="number" name="LevelNumber", min="0" max="10"/>
+<br>
+<button type="button" onclick="levelEditor.onOpen();">Open</button>
+</form>
+</tr>
+</td>
+
+<tr>
+<td>
+<textarea id = "LevelOutput" disabled=true rows="8" cols="65">Output</textarea>
+<br />
+<button type="button" onclick="levelEditor.onRefresh();">Refresh</button>
+</td>
+</tr>
+
+</table>
+
+<script type="text/javascript">
+
+var levelEditor = new LevelEditor();
+
+</script>
+
+</body>

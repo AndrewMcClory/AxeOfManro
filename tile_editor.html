@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="cache-control" content="no-cache">
+
+<title>Tile Editor</title>
+
+<script language="javascript" src="javascripts/game_constants.js?201306091030" type="text/javascript"></script>
+<script language="javascript" src="javascripts/canvas_objects.js?201306080815" type="text/javascript"></script>
+<script language="javascript" src="javascripts/game_geometry.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_palette.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_editor.js?201305060932" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table style='margin: 0px auto;'>
+<tr>
+<td>
+<canvas id="TileCanvas" onmousedown="tileEditor.tileMouseDown(event);" width="640" height="480" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="TileForm">
+Solid: <input type="checkbox" id="solid" value="solid"  />
+<br>
+Slippery: <input type="checkbox" id="slippery" value="slippery"  />
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="SrcForm">
+Tile Image: <input type="text" name="TileImage"/>
+<br>
+<button type="button" onclick="tileEditor.onGenerate();">Generate</button>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<form style="border:1px solid #c3c3c3;" onsubmit="submitForm();" name="OpenForm">
+Tile Set: <input type="number" name="TileSetNumber", min="0" max="10"/>
+<br>
+<button type="button" onclick="tileEditor.onOpen();">Open</button>
+</form>
+</td>
+</tr>
+
+<tr>
+<td>
+<textarea id = "TileOutput" disabled=true rows="8" cols="65">Output</textarea>
+<br />
+<button type="button" onclick="tileEditor.onRefresh();">Refresh</button>
+</td>
+</tr>
+
+</table>
+
+<script type="text/javascript">
+var tileEditor = new TileEditor();
+</script>
+
+</body>

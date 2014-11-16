@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="description" content="A Simple HTML5 Platformer">
+<meta name="keywords" content="HTML5,Platformer,Game,JavaScript">
+<meta name="author" content="Andrew McClory">
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="cache-control" content="no-cache">
+
+<title>Axe of Manro</title>
+<link rel="shortcut icon" href="images/axe.ico">
+
+<script language="javascript" src="javascripts/game_constants.js?201306202245" type="text/javascript"></script>
+<script language="javascript" src="javascripts/jquery.min.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/jquery.hotkeys.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/key_status.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/linked_list.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/canvas_objects.js?201306080815" type="text/javascript"></script>
+<script language="javascript" src="javascripts/game_geometry.js?201306100645" type="text/javascript"></script>
+<script language="javascript" src="javascripts/tile_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/sprite_data.js?201305060932" type="text/javascript"></script>
+<script language="javascript" src="javascripts/animated_canvas.js?201306102134" type="text/javascript"></script>
+<script language="javascript" src="javascripts/level_canvas.js?201306100645" type="text/javascript"></script>
+<script language="javascript" src="javascripts/level_data.js?201306160636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/action_utils.js?201306160636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/hero_actions.js?201306160636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/item_actions.js?201306160636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/platform_actions.js?201306100645" type="text/javascript"></script>
+<script language="javascript" src="javascripts/decoration_actions.js?201306150636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/weapon_actions.js?201306160636" type="text/javascript"></script>
+<script language="javascript" src="javascripts/enemy_actions.js?201306162134" type="text/javascript"></script>
+<script language="javascript" src="javascripts/info_data.js?201305311200" type="text/javascript"></script>
+<script language="javascript" src="javascripts/info_canvas.js?201305311200" type="text/javascript"></script>
+<script language="javascript" src="javascripts/game_board.js?201311171445" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table style='margin: 0px auto; border: 8px outset gray;'>
+
+<tr>
+<td>
+<canvas id="LevelCanvas" onmousedown="gameBoard.levelMouseDown(event);" width="640" height="512" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Axe of Manro</b>
+<br>
+<b>Copyright 2013 by Andrew McClory</b>
+<br>
+<b>Use arrow keys to move, 'z' to jump, and 'x' to attack.  Press 'h' at any time for help</b>
+</td>
+</tr>
+
+</table>
+
+<script type="text/javascript">
+try { var gameBoard = new GameBoard(); }
+catch(err) { alert("Game error: " + err); }
+</script>
+
+</body>
